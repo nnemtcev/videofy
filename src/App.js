@@ -1,8 +1,13 @@
 import React from "react";
+import { HeaderNav } from "./containers/HeaderNav/HeaderNav.js";
 
 class App extends React.Component {
   render() {
-    return <div>Hello World</div>;
+    return (
+      <div>
+        <HeaderNav />
+      </div>
+    );
   }
 }
 
