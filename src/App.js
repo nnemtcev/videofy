@@ -1,15 +1,21 @@
 import React from "react";
-import { HeaderNav } from "./containers/HeaderNav/HeaderNav";
-import { Sidebar } from "./containers/Sidebar/Sidebar";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import { Home } from "./containers/Home/Home";
 import { AppLayout } from "./components/AppLayout/AppLayout";
+import { Watch } from "./containers/Watch/Watch";
 
 class App extends React.Component {
   render() {
     return (
-      <AppLayout>
-        <Home />
-      </AppLayout>
+      <BrowserRouter>
+        <AppLayout>
+          <Switch>
+            <Route path="/watch" component={Watch} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </AppLayout>
+      </BrowserRouter>
     );
   }
 }
