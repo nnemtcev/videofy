@@ -11,7 +11,7 @@ export class Home extends React.Component {
         <div className="home">
           <div className="responsive-video-grid-container">
             <VideoGrid title="Trending" />
-            <VideoGrid title="Autos & Vehicles" hideDivider={true} />
+            <VideoGrid title="Autos & Vehicles" hideDivider />
           </div>
         </div>
       </React.Fragment>

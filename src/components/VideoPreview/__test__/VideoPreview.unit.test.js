@@ -1,10 +1,10 @@
-import { snapshot } from "enzyme";
+import { shallow } from "enzyme";
 import React from "react";
-import VideoPreview from "./VideoPreview";
+import { VideoPreview } from "../VideoPreview";
 
 describe("VideoPreview", () => {
   test("component renders successfully", () => {
-    const wrapper = snapshot(<VideoPreview />);
+    const wrapper = shallow(<VideoPreview />);
     expect(wrapper).toMatchSnapshot();
   });
 });
