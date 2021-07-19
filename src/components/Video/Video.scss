@@ -1,13 +1,15 @@
 .video-container {
-  position: relative;
+  position: relative; /** So we can use absolute positioning for child elements **/
   width: 100%;
 
+  /** Set 16:9 dimensions for the .video-container div **/
   &:before {
     content: "";
     display: block;
     padding-top: 56.25%;
   }
 
+  /** Set the actual video div "on top" of the ::before pseudo-element **/
   .video {
     position: absolute;
     top: 0;

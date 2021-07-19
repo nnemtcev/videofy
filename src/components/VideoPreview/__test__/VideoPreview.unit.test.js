@@ -7,4 +7,9 @@ describe("VideoPreview", () => {
     const wrapper = shallow(<VideoPreview />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  test("renders horizontally when horizontal prop is set to true", () => {
+    const wrapper = shallow(<VideoPreview horizontal />);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
