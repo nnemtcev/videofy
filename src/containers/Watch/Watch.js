@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Watch.scss";
 import { Video } from "../../components/Video/Video";
-import { VideoPreview } from "../../components/VideoPreview/VideoPreview";
+import { RelatedVideos } from "../../components/RelatedVideos/RelatedVideos";
 
 export class Watch extends React.Component {
   render() {
@@ -11,9 +11,7 @@ export class Watch extends React.Component {
         <div style={{ maxWidth: "80%" }}>
           <Video id="-7fuHEEmEjs" />
         </div>
-        <div style={{ display: "inline" }}>
-          <VideoPreview horizontal />
-        </div>
+        <RelatedVideos />
       </React.Fragment>
     );
   }
