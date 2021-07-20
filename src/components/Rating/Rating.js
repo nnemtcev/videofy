@@ -14,5 +14,17 @@ export function Rating({ likeCount, dislikeCount }) {
     progress = <Progress className="progress" percent={percent} size="tiny" />;
   }
 
-  return <div>Rating</div>;
+  return (
+    <div className="rating">
+      <div className="thumbs-up">
+        <Icon name="thumbs outline up" />
+        <span>{likeCount}</span>
+      </div>
+      <div className="thumbs-down">
+        <Icon name="thumbs outline down" />
+        <span>{dislikeCount}</span>
+      </div>
+      {progress}
+    </div>
+  );
 }
