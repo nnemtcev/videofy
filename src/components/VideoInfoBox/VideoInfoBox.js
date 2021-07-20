@@ -11,6 +11,10 @@ export class VideoInfoBox extends React.Component {
     };
   }
 
+  // Function that handles a click event on
+  // the "Show More" button, which will
+  // collapse the description section
+
   onToggleCollapseButtonClick = () => {
     this.setState((previousState) => {
       return {
@@ -20,6 +24,14 @@ export class VideoInfoBox extends React.Component {
   };
 
   render() {
+    let descriptionTextClass = "collapsed";
+    let buttonTitle = "Show More";
+
+    if (!this.state.collapsed) {
+      descriptionTextClass = "expanded";
+      buttonTitle = "Show Less";
+    }
+
     return (
       <div className="video-info-box">
         <Image
@@ -32,18 +44,16 @@ export class VideoInfoBox extends React.Component {
           <div className="video-publication-date">Thu 24, 2017</div>
         </div>
         <Button color="youtube">91.5K Subscribe</Button>
-        <div
-          className={`video-description ${
-            this.state.collapsed ? "collapsed" : "expanded"
-          }`}
-        >
-          <p>Paragraph 1</p>
-          <p>Paragraph 2</p>
-          <p>Paragraph 3</p>
-          <p>Paragraph 4</p>
-          <p>Paragraph 5</p>
+        <div className="video-description">
+          <div className={descriptionTextClass}>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+            <p>Paragraph 3</p>
+            <p>Paragraph 4</p>
+            <p>Paragraph 5</p>
+          </div>
           <Button onClick={this.onToggleCollapseButtonClick} compact>
-            Show More
+            {buttonTitle}
           </Button>
         </div>
       </div>
