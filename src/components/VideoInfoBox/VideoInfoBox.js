@@ -3,11 +3,15 @@ import { Image, Button } from "semantic-ui-react";
 
 import "./VideoInfoBox.scss";
 
+// The VideoInfoBox component displays information
+// about the YouTube video, such as the description,
+// the channel that uploaded the video, and more.
+
 export class VideoInfoBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: true,
+      collapsed: true, // State that tracks whether the video description is collapsed.
     };
   }
 
