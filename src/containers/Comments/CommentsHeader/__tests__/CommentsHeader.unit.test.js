@@ -1,0 +1,16 @@
+import { shallow } from "enzyme";
+import React from "react";
+
+import { CommentsHeader } from "../CommentsHeader";
+
+describe("CommentsHeader", () => {
+  test("CommentsHeader renders with props.amountComments = null", () => {
+    const wrapper = shallow(<CommentsHeader />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test("CommentsHeader renders with props.amountComments = 538", () => {
+    const wrapper = shallow(<CommentsHeader amountComments={538} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
