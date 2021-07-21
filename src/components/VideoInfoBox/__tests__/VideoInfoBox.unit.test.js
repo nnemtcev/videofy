@@ -5,7 +5,7 @@ import { VideoInfoBox } from "../VideoInfoBox";
 
 describe("VideoInfoBox", () => {
   test("renders collapsed video description", () => {
-    const wrapper = shallow(<VideoInfoBox />);
+    const wrapper = shallow(<VideoInfoBox />); // VideoInfoBox's description is collapsed by default
     expect(wrapper).toMatchSnapshot();
   });
 
