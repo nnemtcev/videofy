@@ -62,3 +62,56 @@ function createResource(properties) {
   }
   return resource;
 }
+
+export function buildMostPopularVideosRequest(
+  amount = 12,
+  loadDescription = false,
+  nextPageToken
+) {
+  // fields is for preventing overfetching of data from the YouTube API
+  let fields =
+    "nextPageToken,prevPageToken,items(contentDetails/duration,id,snippet(channelId,channelTitle,localized/title,publishedAt,thumbnails/medium,title),statistics/viewCount),pageInfo(totalResults)";
+
+  if (loadDescription) {
+    fields += ",items/snippet/description";
+  }
+
+  return buildApiRequest(
+    "GET",
+    "/youtube/v3/videos",
+    {
+      part: "snippet,statistics,contentDetails",
+      chart: "mostPopular",
+      maxResults: amount,
+      regionCode: "US",
+      pageToken: nextPageToken,
+      fields,
+    },
+    null
+  );
+}
+
+export function setMostPopularVideos(response, prevState) {
+  // Maps the ID of the video to the video object itself
+  const videoMap = response.items.reduce((accumulator, video) => {
+    accumulator[video.id] = video;
+    return accumulator;
+  }, {});
+
+  let items = Object.keys(videoMap);
+  if (response.hasOwnProperty("prevPageToken") && prevState.mostPopular) {
+    items = [...prevState.mostPopular.items, ...items];
+  }
+
+  const mostPopular = {
+    totalResults: response.pageInfo.totalResults,
+    nextPageToken: response.nextPageToken,
+    items,
+  };
+
+  return {
+    ...prevState,
+    mostPopular,
+    byId: { ...prevState.byId, ...videoMap },
+  };
+}
