@@ -21,7 +21,6 @@ export function HomeContent() {
       if (libraryLoaded) {
         const response = await getPopularVideos();
         setMostPopularVideos(response);
-        console.log(mostPopularVideos);
       }
     };
 
@@ -31,7 +30,10 @@ export function HomeContent() {
   return (
     <div className="home-content">
       <div className="responsive-video-grid-container">
-        <VideoGrid title="Trending" />
+        <VideoGrid
+          videos={Object.values(mostPopularVideos.byId)}
+          title="Trending"
+        />
         <VideoGrid title="Autos & Vehicles" hideDivider />
       </div>
     </div>
