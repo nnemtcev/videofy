@@ -27,6 +27,8 @@ export function HomeContent() {
     loadPopularVideosOnRender();
   }, [libraryLoaded]);
 
+  console.log(mostPopularVideos);
+
   return (
     <div className="home-content">
       <div className="responsive-video-grid-container">
