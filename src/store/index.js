@@ -2,7 +2,9 @@ import create from "zustand";
 
 import {
   buildMostPopularVideosRequest as buildPopularVideosRequest,
+  buildVideoCategoriesRequest,
   setMostPopularVideos as setPopularVideos,
+  mapCategoryIdToTitle,
 } from "./youtube-api";
 
 export default create((set) => ({
@@ -15,14 +17,36 @@ export default create((set) => ({
   mostPopularVideos: {
     byId: {},
     mostPopular: {},
+    categories: {},
+    byCategory: {},
   },
-  async buildMostPopularVideosRequest() {
-    const response = await buildPopularVideosRequest();
+  async buildMostPopularVideosRequest(
+    amount,
+    loadDescription,
+    nextPageToken,
+    videoCategoryId
+  ) {
+    const response = await buildPopularVideosRequest(
+      amount,
+      loadDescription,
+      nextPageToken,
+      videoCategoryId
+    );
+
     return response.result;
   },
   setMostPopularVideos(response) {
     set((state) => ({
       mostPopularVideos: setPopularVideos(response, state),
+    }));
+  },
+  async fetchVideoCategories() {
+    const response = await buildVideoCategoriesRequest();
+    return response;
+  },
+  setVideoCategories(categories) {
+    set((state) => ({
+      categories: mapCategoryIdToTitle(categories),
     }));
   },
 }));

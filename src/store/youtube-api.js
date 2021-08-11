@@ -66,7 +66,8 @@ function createResource(properties) {
 export function buildMostPopularVideosRequest(
   amount = 12,
   loadDescription = false,
-  nextPageToken
+  nextPageToken,
+  videoCategoryId = null
 ) {
   // fields is for preventing overfetching of data from the YouTube API
   let fields =
@@ -86,6 +87,7 @@ export function buildMostPopularVideosRequest(
       regionCode: "US",
       pageToken: nextPageToken,
       fields,
+      videoCategoryId,
     },
     null
   );
@@ -114,4 +116,29 @@ export function setMostPopularVideos(response, prevState) {
     mostPopular,
     byId: { ...prevState.byId, ...videoMap },
   };
+}
+
+// A helper function that maps the id of the category to
+// the category title that was fetched from the YouTube API
+export function mapCategoryIdToTitle(categories) {
+  return categories.reduce((accumulator, category) => {
+    const {
+      id,
+      snippet: { title },
+    } = category;
+    accumulator[id] = title;
+    return accumulator;
+  }, {});
+}
+
+export function buildVideoCategoriesRequest() {
+  return buildApiRequest(
+    "GET",
+    "/youtube/v3/videoCategories",
+    {
+      part: "snippet",
+      regionCode: "US",
+    },
+    null
+  );
 }
