@@ -1,9 +1,11 @@
-import { shallow } from "enzyme";
-import React from "react";
+import React from 'react';
+import {shallow} from 'enzyme';
+import {Rating} from '../Rating';
 
-import { Rating } from "../Rating";
-
-describe("Rating", () => {
-  const wrapper = shallow(<Rating />);
-  expect(wrapper).toMatchSnapshot();
+describe('Rating', () => {
+  test('renders', () => {
+    const wrapper = shallow(<Rating/>);
+    expect(wrapper).toMatchSnapshot();
+  });
 });
+

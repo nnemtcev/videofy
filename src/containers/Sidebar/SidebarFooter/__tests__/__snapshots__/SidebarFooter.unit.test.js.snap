@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sidebar footer renders 1`] = `
+exports[`SideBarFooter renders 1`] = `
 <Fragment>
   <div
     className="footer-block"
@@ -42,7 +42,7 @@ exports[`sidebar footer renders 1`] = `
     className="footer-block"
   >
     <div>
-      © Videofy - Made by Nick Nemtcev
+      © Productioncoder.com - A Youtube clone for educational purposes under fair use.
     </div>
   </div>
 </Fragment>

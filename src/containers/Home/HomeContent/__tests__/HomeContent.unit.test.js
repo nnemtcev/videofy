@@ -1,11 +1,12 @@
-import { shallow } from "enzyme";
-import React from "react";
+import {shallow} from 'enzyme';
+import {HomeContent} from '../HomeContent';
+import React from 'react';
 
-import { HomeContent } from "../HomeContent";
-
-describe("HomeContent", () => {
-  test("HomeContent renders successfully", () => {
-    const wrapper = shallow(<HomeContent />);
+describe('HomeContent', () => {
+  test('renders', () => {
+    const wrapper = shallow(
+      <HomeContent bottomReachedCallback={jest.fn()} showLoader={true} ideosByCategory={[]} mostPopularVideos={[]}/>
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });

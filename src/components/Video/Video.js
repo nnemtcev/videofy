@@ -1,27 +1,21 @@
-import React from "react";
-import "./Video.scss";
+import React from 'react';
+import './Video.scss';
 
-const BASE_EMBED_URL = "https://www.youtube.com/embed/";
-
-// Video is a functional component that renders a responsive iFrame
-// containing the YouTube video, in 16:9 dimensions
+const BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 
 export function Video(props) {
-  if (!props.id) return null; // If a YouTube video id is not passed in, render nothing
+  if(!props.id) {
+    return null;
+  }
+  //const embedUrl = `${BASE_EMBED_URL}${props.id}?autoplay=1`;
   const embedUrl = `${BASE_EMBED_URL}${props.id}`;
-
   return (
-    <div className="video-container">
+    <div className='video-container'>
       <div className="video">
-        <iframe
-          src={embedUrl}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          title={"video"}
-          className="video-player"
-        ></iframe>
+        <iframe className='video-player' src={embedUrl} frameBorder='0'
+                allow='autoplay; encrypted-media' allowFullScreen title='video' />
       </div>
+
     </div>
   );
 }

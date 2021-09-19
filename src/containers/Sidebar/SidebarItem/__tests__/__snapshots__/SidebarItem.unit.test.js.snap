@@ -1,64 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidebarItem SidebarItem renders with no props passed in 1`] = `
-<MenuItem
-  className="sidebar-item "
+exports[`SideBarItem Render non-highlighted SideBarItem 1`] = `
+<Link
+  to={
+    Object {
+      "pathname": undefined,
+    }
+  }
 >
-  <div
-    className="sidebar-item-alignment-container"
+  <MenuItem
+    className="sidebar-item "
   >
-    <span>
-      <Icon
-        as="i"
-        size="large"
-      />
-       
-    </span>
-    <span />
-  </div>
-</MenuItem>
+    <div
+      className="sidebar-item-alignment-container"
+    >
+      <span>
+        <Icon
+          as="i"
+          name="fire"
+          size="large"
+        />
+         
+      </span>
+      <span>
+        Trending
+      </span>
+    </div>
+  </MenuItem>
+</Link>
 `;
 
-exports[`SidebarItem highlighted SidebarItem renders with icon and label 1`] = `
-<MenuItem
-  className="sidebar-item "
+exports[`SideBarItem Renders SideBarItem without path 1`] = `
+<Link
+  to={
+    Object {
+      "pathname": undefined,
+    }
+  }
 >
-  <div
-    className="sidebar-item-alignment-container"
+  <MenuItem
+    className="sidebar-item "
   >
-    <span>
-      <Icon
-        as="i"
-        name="fire"
-        size="large"
-      />
-       
-    </span>
-    <span>
-      Trending
-    </span>
-  </div>
-</MenuItem>
+    <div
+      className="sidebar-item-alignment-container"
+    >
+      <span>
+        <Icon
+          as="i"
+          size="large"
+        />
+         
+      </span>
+      <span />
+    </div>
+  </MenuItem>
+</Link>
 `;
 
-exports[`SidebarItem non-highlighted SidebarItem renders with icon and label 1`] = `
-<MenuItem
-  className="sidebar-item "
+exports[`SideBarItem Renders highlighted SideBarItem 1`] = `
+<Link
+  to={
+    Object {
+      "pathname": "/feed/trending",
+    }
+  }
 >
-  <div
-    className="sidebar-item-alignment-container"
+  <MenuItem
+    className="sidebar-item highlight-item"
   >
-    <span>
-      <Icon
-        as="i"
-        name="fire"
-        size="large"
-      />
-       
-    </span>
-    <span>
-      Trending
-    </span>
-  </div>
-</MenuItem>
+    <div
+      className="sidebar-item-alignment-container"
+    >
+      <span>
+        <Icon
+          as="i"
+          name="fire"
+          size="large"
+        />
+         
+      </span>
+      <span>
+        Trending
+      </span>
+    </div>
+  </MenuItem>
+</Link>
 `;

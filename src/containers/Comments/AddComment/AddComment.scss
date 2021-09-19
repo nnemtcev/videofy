@@ -1,4 +1,4 @@
-@import "../../../styles/shared.scss";
+@import '../../../styles/shared.scss';
 
 .add-comment {
   display: flex;
@@ -6,7 +6,7 @@
   margin-bottom: 16px;
 
   form {
-    flex: 1; // Form takes up the rest of the width
+    flex: 1;
   }
 
   .user-image {
@@ -15,3 +15,4 @@
     margin-right: $avatar-margin;
   }
 }
+

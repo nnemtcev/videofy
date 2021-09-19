@@ -1,9 +1,10 @@
-import { shallow } from "enzyme";
-import React from "react";
+import React from 'react';
+import {SideBarFooter} from '../SideBarFooter';
+import {shallow} from 'enzyme';
 
-import { SidebarFooter } from "../SidebarFooter.js";
-
-test("sidebar footer renders", () => {
-  const wrapper = shallow(<SidebarFooter />);
-  expect(wrapper).toMatchSnapshot();
+describe('SideBarFooter', () => {
+  test('renders', () => {
+    const wrapper = shallow(<SideBarFooter/>);
+    expect(wrapper).toMatchSnapshot();
+  });
 });

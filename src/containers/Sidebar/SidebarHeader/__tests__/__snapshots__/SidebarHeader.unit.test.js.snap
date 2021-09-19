@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SidebarHeader SidebarHeader renders with empty title prop passed in 1`] = `
+exports[`SideBarHeader renders with empty title 1`] = `
 <MenuItem>
   <MenuHeader
     className="side-bar-header"
@@ -8,20 +8,20 @@ exports[`SidebarHeader SidebarHeader renders with empty title prop passed in 1`]
 </MenuItem>
 `;
 
-exports[`SidebarHeader SidebarHeader renders with null title prop 1`] = `
-<MenuItem>
-  <MenuHeader
-    className="side-bar-header"
-  />
-</MenuItem>
-`;
-
-exports[`SidebarHeader SidebarHeader renders with title prop passed in 1`] = `
+exports[`SideBarHeader renders with title 1`] = `
 <MenuItem>
   <MenuHeader
     className="side-bar-header"
   >
-    SUBSCRIPTIONS
+    JUST A TITLE
   </MenuHeader>
+</MenuItem>
+`;
+
+exports[`SideBarHeader renders without title 1`] = `
+<MenuItem>
+  <MenuHeader
+    className="side-bar-header"
+  />
 </MenuItem>
 `;

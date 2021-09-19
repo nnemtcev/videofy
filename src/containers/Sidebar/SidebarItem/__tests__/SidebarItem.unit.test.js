@@ -1,23 +1,30 @@
-import { shallow } from "enzyme";
-import React from "react";
+import React from 'react';
+import {shallow} from 'enzyme';
+import {SideBarItem} from '../SideBarItem';
 
-import { SidebarItem } from "../SidebarItem.js";
+const location = {
+  pathname: '/feed/trending',
+};
 
-describe("SidebarItem", () => {
-  test("SidebarItem renders with no props passed in", () => {
-    const wrapper = shallow(<SidebarItem />);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  test("highlighted SidebarItem renders with icon and label", () => {
+describe('SideBarItem', () => {
+  test('Renders SideBarItem without path', () => {
     const wrapper = shallow(
-      <SidebarItem highlighted icon="fire" label="Trending" />
+      <SideBarItem location={location} />
     );
     expect(wrapper).toMatchSnapshot();
   });
 
-  test("non-highlighted SidebarItem renders with icon and label", () => {
-    const wrapper = shallow(<SidebarItem icon="fire" label="Trending" />);
+  test('Renders highlighted SideBarItem', () => {
+    const wrapper = shallow(
+      <SideBarItem highlighted icon='fire' label='Trending' location={location} path={'/feed/trending'}/>
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('Render non-highlighted SideBarItem', () => {
+    const wrapper = shallow(
+      <SideBarItem icon='fire' label='Trending' location={location}/>
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,17 +1,15 @@
-import React from "react";
-import { shallow } from "enzyme";
+import {VideoInfoBox} from '../VideoInfoBox';
+import {shallow} from 'enzyme';
+import React from 'react';
 
-import { VideoInfoBox } from "../VideoInfoBox";
-
-describe("VideoInfoBox", () => {
-  test("renders collapsed video description", () => {
-    const wrapper = shallow(<VideoInfoBox />); // VideoInfoBox's description is collapsed by default
+describe('VideoInfoBox', () => {
+  test('renders collapsed', () => {
+    const wrapper = shallow(<VideoInfoBox/>);
     expect(wrapper).toMatchSnapshot();
   });
-
-  test("renders expanded video description", () => {
-    const wrapper = shallow(<VideoInfoBox />);
-    wrapper.setState({ collapsed: false });
+  test('renders expanded', () => {
+    const wrapper = shallow(<VideoInfoBox/>);
+    wrapper.setState({collapsed: false});
     expect(wrapper).toMatchSnapshot();
   });
 });

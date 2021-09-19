@@ -1,19 +1,13 @@
-import React from "react";
-import { Button, Icon } from "semantic-ui-react";
-
-import "./CommentsHeader.scss";
-
-// The CommentsHeader component displays the
-// topmost header in the Comments component
-// which includes the number of comments and
-// a "Sort By" button
+import React from 'react';
+import {Button, Icon} from "semantic-ui-react";
+import './CommentsHeader.scss';
 
 export function CommentsHeader(props) {
   return (
-    <div className="comments-header">
+    <div className='comments-header'>
       <h4>{props.amountComments} Comments</h4>
-      <Button basic compact icon labelPosition="left">
-        <Icon name="align left" />
+      <Button basic compact icon labelPosition='left'>
+        <Icon name='align left' />
         Sort by
       </Button>
     </div>

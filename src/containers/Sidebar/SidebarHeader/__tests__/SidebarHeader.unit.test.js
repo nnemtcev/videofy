@@ -1,20 +1,18 @@
-import { shallow } from "enzyme";
-import React from "react";
-import { SidebarHeader } from "../SidebarHeader.js";
+import React from 'react';
+import {shallow} from 'enzyme';
+import {SideBarHeader} from '../SideBarHeader';
 
-describe("SidebarHeader", () => {
-  test("SidebarHeader renders with title prop passed in", () => {
-    const wrapper = shallow(<SidebarHeader title="subscriptions" />);
+describe('SideBarHeader', () => {
+  test('renders without title', () => {
+    const wrapper = shallow(<SideBarHeader/>);
     expect(wrapper).toMatchSnapshot();
   });
-
-  test("SidebarHeader renders with null title prop", () => {
-    const wrapper = shallow(<SidebarHeader />);
+  test('renders with empty title', () => {
+    const wrapper = shallow(<SideBarHeader title=''/>);
     expect(wrapper).toMatchSnapshot();
   });
-
-  test("SidebarHeader renders with empty title prop passed in", () => {
-    const wrapper = shallow(<SidebarHeader title="" />);
+  test('renders with title', () => {
+    const wrapper = shallow(<SideBarHeader title='Just a title'/>);
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -1,15 +1,19 @@
-import { snapshot } from "enzyme";
-import React from "react";
-import { Video } from "../Video";
+import React from 'react';
+import {Video} from '../Video';
+import {shallow} from 'enzyme';
 
-describe("Video", () => {
-  test("renders null if no id prop", () => {
-    const wrapper = snapshot(<Video />);
+describe('Video', () => {
+  test('renders video component correctly', () => {
+    const wrapper = shallow(
+      <Video id='HAuXJVI_bUs'/>
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
-  test("renders a video successfully if valid id prop", () => {
-    const wrapper = snapshot(<Video id="-7fuHEEmEjs" />);
+  test('renders null if id in video component not specified', () => {
+    const wrapper = shallow(
+      <Video/>
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });

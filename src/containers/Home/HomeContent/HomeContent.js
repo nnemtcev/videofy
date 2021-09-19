@@ -1,73 +1,48 @@
-import React, { useEffect } from "react";
+import {VideoGrid} from '../../../components/VideoGrid/VideoGrid';
+import React from 'react';
+import './HomeContent.scss';
+import {getMostPopularVideos, getVideosByCategory} from '../../../store/reducers/videos';
+import {connect} from 'react-redux';
+import {InfiniteScroll} from '../../../components/InfiniteScroll/InfiniteScroll';
 
-import { VideoGrid } from "../../../components/VideoGrid/VideoGrid";
-import "./HomeContent.scss";
+const AMOUNT_TRENDING_VIDEOS = 12;
 
-import useStore from "../../../store";
+export class HomeContent extends React.Component {
+  render() {
+    const trendingVideos = this.getTrendingVideos();
+    const categoryGrids = this.getVideoGridsForCategories();
 
-// The HomeContent component displays trending videos
-// and the most popular videos for each category
-
-export function HomeContent() {
-  const fetchMostPopularVideos = useStore(
-    (state) => state.buildMostPopularVideosRequest
-  );
-
-  const setMostPopularVideos = useStore((state) => state.setMostPopularVideos);
-
-  const isLibraryLoaded = useStore((state) => state.libraryLoaded);
-
-  const mostPopularVideos = useStore((state) => state.mostPopularVideos);
-
-  const fetchVideoCategories = useStore((state) => state.fetchVideoCategories);
-
-  const setVideoCategories = useStore((state) => state.setVideoCategories);
-
-  useEffect(() => {
-    const fetchMostPopularVideosAndCategories = async () => {
-      // Fetch data from the YouTube API only if
-      // the Google API has loaded
-      if (isLibraryLoaded) {
-        // Fetch the most popular videos and set them in global state
-        const response = await fetchMostPopularVideos();
-        setMostPopularVideos(response);
-
-        // Fetch the video categories and set them in global state
-        const videoCategories = await fetchVideoCategories();
-        setVideoCategories(videoCategories.result.items);
-        const mostPopularVideosInEachCategory = [];
-
-        const requests = videoCategories.result.items.forEach((category) => {
-          const { id } = category;
-          const mostPopularVideosInCategory = fetchMostPopularVideos(
-            12,
-            false,
-            null,
-            id
-          ).catch((error) => error);
-          mostPopularVideosInEachCategory.push(mostPopularVideosInCategory);
-        });
-
-        Promise.all(mostPopularVideosInEachCategory).then(
-          (resolvedPromises) => {
-            resolvedPromises.forEach((promise) => console.log(promise));
-          }
-        );
-      }
-    };
-
-    fetchMostPopularVideosAndCategories();
-  }, [isLibraryLoaded]);
-
-  return (
-    <div className="home-content">
-      <div className="responsive-video-grid-container">
-        <VideoGrid
-          videos={Object.values(mostPopularVideos.byId)}
-          title="Trending"
-        />
-        <VideoGrid title="Autos & Vehicles" hideDivider />
+    return (
+      <div className='home-content'>
+        <div className="responsive-video-grid-container">
+          <InfiniteScroll bottomReachedCallback={this.props.bottomReachedCallback} showLoader={this.props.showLoader}>
+            <VideoGrid title='Trending' videos={trendingVideos}/>
+            {categoryGrids}
+          </InfiniteScroll>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  getTrendingVideos() {
+    return this.props.mostPopularVideos.slice(0, AMOUNT_TRENDING_VIDEOS);
+  }
+
+  getVideoGridsForCategories() {
+    const categoryTitles = Object.keys(this.props.videosByCategory || {});
+    return categoryTitles.map((categoryTitle,index) => {
+      const videos = this.props.videosByCategory[categoryTitle];
+      // the last video grid element should not have a divider
+      const hideDivider = index === categoryTitles.length - 1;
+      return <VideoGrid title={categoryTitle} videos={videos} key={categoryTitle} hideDivider={hideDivider}/>;
+    });
+  }
 }
+
+function mapStateToProps(state) {
+  return {
+    videosByCategory: getVideosByCategory(state),
+    mostPopularVideos: getMostPopularVideos(state),
+  };
+}
+export default connect(mapStateToProps, null)(HomeContent);

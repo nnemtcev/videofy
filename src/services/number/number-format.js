@@ -1,14 +1,12 @@
-const UNITS = ["K", "M", "B", "T"];
+const UNITS = ['K', 'M', 'B', 'T'];
 
-// Helper function that converts a number to a
-// formatted and rounded number string with units (K for thousands, M for millions, etc.)
+// https://stackoverflow.com/a/28608086/2328833
 export function getShortNumberString(number) {
   const shouldShowDecimalPlace = UNITS.some((element, index) => {
     const lowerBound = Math.pow(1000, index + 1);
     const upperBound = lowerBound + lowerBound * 10;
-    return number > lowerBound && number < upperBound;
+    return  number > lowerBound && number < upperBound
   });
-
   const digits = shouldShowDecimalPlace ? 1 : 0;
   for (let i = UNITS.length - 1; i >= 0; i--) {
     const decimal = Math.pow(1000, i + 1);
@@ -17,6 +15,5 @@ export function getShortNumberString(number) {
       return (number / decimal).toFixed(digits) + UNITS[i];
     }
   }
-
   return number.toString();
 }
