@@ -1,10 +1,10 @@
 # Videofy: A YouTube-inspired Web App
 
-A YouTube-inspired web app developed in React.
+A YouTube-inspired web app developed in React. Zustand was used for state management as opposed to Redux.
 
 **LIVE AT:** https://videofy.netlify.app/
 
-<img src="https://i.gyazo.com/056f22aff85e416c1225876cdc2440ce.gif" width="300" height="80" />
+![Videofy demo .gif](https://i.gyazo.com/056f22aff85e416c1225876cdc2440ce.gif)
 
 ## Features
 
