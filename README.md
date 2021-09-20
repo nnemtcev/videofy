@@ -4,7 +4,7 @@ A YouTube-inspired web app developed in React. Zustand was used for state manage
 
 **LIVE AT:** https://videofy.netlify.app/
 
-![Videofy demo .gif](https://i.gyazo.com/056f22aff85e416c1225876cdc2440ce.gif)
+![Videofy demo .gif](/demo.gif)
 
 ## Features
 
