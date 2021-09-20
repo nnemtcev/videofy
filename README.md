@@ -4,7 +4,7 @@ A YouTube-inspired web app developed in React.
 
 **LIVE AT:** https://videofy.netlify.app/
 
-![Videofy demo](https://i.gyazo.com/056f22aff85e416c1225876cdc2440ce.gif)
+<img src="https://i.gyazo.com/056f22aff85e416c1225876cdc2440ce.gif" width="300" height="80" />
 
 ## Features
 
