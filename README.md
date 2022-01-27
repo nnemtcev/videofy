@@ -1,6 +1,8 @@
 # Videofy: A YouTube-inspired Web App
 
-A YouTube-inspired web app developed in React. Zustand was used for state management as opposed to Redux.
+A YouTube-inspired web app developed in React. Zustand was used for state management as opposed to Redux. Semantic UI was used for styling purposes.
+
+Note that YouTube uses HLS as the standard protocol for delivery, and DASH for ingestion, so building this project allowed me to explore how to work with these different protocols in order to build a web app that allows for video streaming via the YouTube Data API.
 
 **DEMO:**
 
