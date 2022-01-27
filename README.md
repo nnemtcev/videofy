@@ -4,6 +4,8 @@ A YouTube-inspired web app developed in React. Zustand was used for state manage
 
 Note that YouTube uses HLS as the standard protocol for delivery, and DASH for ingestion, so building this project allowed me to explore how to work with these different protocols in order to build a web app that allows for video streaming via the YouTube Data API.
 
+Here is a quick demo that shows the main capabilities of the app (searching for videos and rendering a list of videos and/or live video streams that you can click on and watch).
+
 **DEMO:**
 
 ![Videofy demo .gif](/demo.gif)
